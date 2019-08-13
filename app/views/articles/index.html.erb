@@ -1,0 +1,24 @@
+<h1>hello</h1>
+<p><%= button_to "create", new_article_path, method: :get %></p>
+<br>
+
+<% @articles.each do |robot| %>
+<table>
+  <tr>
+    <th>title</th>
+    <th>description</th>
+
+  </tr>
+<tr>
+    <td><%= link_to robot.title, article_path(robot.id)  %></td>
+    <td><%= link_to robot.description, article_path(robot.id)  %></td>
+
+<br>
+    <th><%= button_to "edit", edit_article_path(robot.id), method: :get %></th>
+    <th><%= button_to "show", article_path(robot), method: :get %></th>
+    <th><%= button_to "delete", article_path(robot), method: :delete, data: {confirm:'are you sure?'} %></th>
+
+
+  <% end %>
+</tr>
+</table>

@@ -1,0 +1,15 @@
+
+<%= form_for @article  do |a| %>
+<p>
+
+<%= a.label :"Please nbew type you title"  %><br>
+<%= a.text_field :title %>
+</p>
+<p>
+<%= a.label :"descrition" %><br>
+<%= a.text_area :description %>
+</p>
+<p>
+ <%= a.submit %>
+</p>
+<%end%>
