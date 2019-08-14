@@ -1,0 +1,48 @@
+$navbar-default-bg: #63b7af ;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo {
+  font-size: 45px;
+  color: black;
+  float: left;
+}
+
+#logo:hover {
+  color: white;
+  text-decoration: underline;
+}
+#new-link {
+  font-size: 19px;
+  width: auto;
+  height: auto;
+
+}
+.btn-lg {
+	background-color: black;
+	border-color: #38cee8;
+  text-align:center;
+}
+
+#drop-main {
+  color: black;
+}
+#new-link {
+    color: black;
+}
+
+.jumbotron {
+background-image: url('https://image.shutterstock.com/image-photo/old-cracked-concrete-wall-net-260nw-275701577.jpg');
+background-size: cover;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #63b7af;
+  color: white;
+  text-align: center;
+  border-top: 9px solid #eaeaea
+}

@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :destroy, :update, :show]
-
+def home
+   render 'home'
+end
 def index
   @articles = Article.all
 
@@ -11,11 +13,11 @@ def new
 end
 
 def create
-  @articles = Article.new(article_params)
+  @article = Article.new(article_params)
 
-  if @articles.save
+  if @article.save
     flash[:success] = "You have updated article"
-    redirect_to article_path(@articles)
+    redirect_to article_path(@article)
   else
     flash[:error] = "You have NOT updated article"
     render 'new'
