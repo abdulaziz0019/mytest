@@ -1,25 +1,37 @@
 
-<h3>< <span class="label label-default">List of articles</span></h3>
-<p><%= button_to "create", new_article_path, method: :get %></p>
-<br>
+<h1>Artiles listing</h1>
+<hr>
+<% @articles.each do |article| %>
 
-<% @articles.each do |robot| %>
-<table>
-  <tr>
-    <th>title</th>
-    <th>description</th>
+<div class="flex-container">
+  <div class="row">
+		        <div class="item col-md-offset col-lg-8 col-xs-offset ">
+              <div class="well well-lg ">
+				          <div class="item-inner rounded center">
+					               <div class="icon-holder text-center mx-auto mb-3">
 
-  </tr>
-<tr>
-    <td><%= link_to robot.title, article_path(robot.id)  %></td>
-    <td><%= link_to robot.description, article_path(robot.id)  %></td>
+                                              <!-- <i class="fas fa-shapes"></i> -->
+					               </div><!--//icon-holder-->
+					    <div class="articke-title">
+                <%= article.title%>
+              </div>
+					    <div class= "article-body">
+                <%= simple_format(truncate(article.description, length:60))%>
+              </div>
+					    <div class="mt-2"> <%= link_to "read more", article_path(article)%></div>
+				        </div><!--//item-inner-->
+			    </div><!--//item-->
+  </div>
+  </div>
+  </div>
+<%end%>
+<div class="item col-md-offset col-lg-4 col-xs-offset ">
+<ul class="list-group">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
 
-<br>
-    <th><%= button_to "edit", edit_article_path(robot.id), method: :get %></th>
-    <th><%= button_to "show", article_path(robot), method: :get %></th>
-    <th><%= button_to "delete", article_path(robot), method: :delete, data: {confirm:'are you sure?'} %></th>
-
-
-  <% end %>
-</tr>
-</table>
+</div>

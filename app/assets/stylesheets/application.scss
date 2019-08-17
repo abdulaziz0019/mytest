@@ -8,6 +8,17 @@ $navbar-default-bg: #63b7af ;
   float: left;
 }
 
+
+.row {
+
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.article-actions{
+  padding-top: 1px;
+}
+
 #logo:hover {
   color: white;
   text-decoration: underline;
@@ -37,12 +48,26 @@ background-size: cover;
 }
 
 .footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: #63b7af;
   color: white;
   text-align: center;
-  border-top: 9px solid #eaeaea
+  border-top: 9px solid #eaeaea;
+  margin-top:9px;
+
+
+}
+#error_explanation {
+  background-color: #fc5858;
+}
+.articke-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  border-bottom: 1px solid #eaeaea;
+}
+.mbr-text {
+  word-wrap: break-word;
+
 }
