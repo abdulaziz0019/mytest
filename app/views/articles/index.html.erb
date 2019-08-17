@@ -8,30 +8,28 @@
 		        <div class="item col-md-offset col-lg-8 col-xs-offset ">
               <div class="well well-lg ">
 				          <div class="item-inner rounded center">
-					               <div class="icon-holder text-center mx-auto mb-3">
+					               <div class="icon-holder text-center mx-auto mb-3"></div><!--//icon-holder-->
+					                    <div class="articke-title">
+                                <%= article.title%>
+                              </div>
+					                         <div class= "article-body">
+                                     <%= simple_format(truncate(article.description, length:60))%>
+                                   </div>
+					                              <div class="mt-2"> <%= link_to "read more", article_path(article)%></div> <hr>
 
-                                              <!-- <i class="fas fa-shapes"></i> -->
-					               </div><!--//icon-holder-->
-					    <div class="articke-title">
-                <%= article.title%>
-              </div>
-					    <div class= "article-body">
-                <%= simple_format(truncate(article.description, length:60))%>
-              </div>
-					    <div class="mt-2"> <%= link_to "read more", article_path(article)%></div>
-				        </div><!--//item-inner-->
+                                        <%if article.user%>
+                                        <small>created by:
+                                          <%= article.user.username%>,
+                                          <%=article.created_at.strftime("%Y/%m/%d")%>
+
+                                        </small>
+                                         <% else %>
+                                          <small>created by: user not found , </small>
+                                          <%=article.created_at.strftime("%Y/%m/%d")%>
+                                          <%end%>
+				        </div>  <!--//item-inner-->
 			    </div><!--//item-->
+        </div>
   </div>
-  </div>
-  </div>
-<%end%>
-<div class="item col-md-offset col-lg-4 col-xs-offset ">
-<ul class="list-group">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
-
 </div>
+<%end%>
