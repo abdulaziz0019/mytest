@@ -41,8 +41,8 @@ def update
 end
   def destroy
     @article.destroy
-
     redirect_to articles_path
+    flash[:success] = "article has been deleted"
 
   end
 
