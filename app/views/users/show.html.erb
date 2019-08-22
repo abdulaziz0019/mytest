@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            <%= image_tag avatar_url(@user, 150) %>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <blockquote>
+                <p><%= @user.username%></p> <small><cite title="Source Title">Riyadh, Saudi Arabia  <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+            </blockquote>
+            <p> <i class="glyphicon glyphicon-envelope"></i> <%= @user.email%><br
+                /> <i class="glyphicon glyphicon-globe"></i> www.bootsnipp.com
+                <br /> <i class="glyphicon glyphicon-gift"></i> <%= @user.created_at.strftime("%Y/%m/%d")%></p>
+        </div>
+         <% if current_user.admin?  %>
+        <div align = "center">
+          <%= link_to "Delete user" , user_path(@user), method: :delete, data:{confirm: " are you sure you want to delete user?"}, class:"btn btn-xs btn-success " %>
+        </div>
+        <%end%>
+      </div>
+    </div>
+
+      <hr>
+      <h3>articles related to <%= @user.username%> :</h3>
+      <% if @user.articles.none? %>
+      <h2>Sorry, this user has no articles yet . . . </h2>
+      <% else %>
+      <%@user.articles.each do |article| %>
+
+          <div class="item-inner rounded center col-lg-8 col-xs-10 offset-1 ">
+            <div class="well well-lg ">
+                      <div class="articke-title">
+                        <%= article.title%>
+                      </div>
+                           <div class= "article-body">
+                             <%= simple_format(truncate(article.description, length:60))%>
+                           </div>
+                                <div class="mt-2"> <%= link_to "read more", article_path(article)%></div>
+                                  <%=article.created_at.strftime("%Y/%m/%d")%>
+                                  <% if current_user == @user || is_admin %>
+                                  <div class="article-actions">
+                                    <hr>
+                                    <%= link_to "back to articles" , articles_path, class:"btn btn-xs btn-success " %>
+                                    <%= link_to "edit the article" , edit_article_path(article) , class:"btn btn-xs btn-primary " %>
+                                    <%= link_to "Delete thevarticle" , article_path(article),method: :delete, data: {confirm:'are you sure?'},
+                                                                      class: "btn btn-xs btn-danger" %>
+                                </div>
+                                <%end%>
+        </div>  <!--//item-inner-->
+</div>
+
+<%end%>
+<%end%>

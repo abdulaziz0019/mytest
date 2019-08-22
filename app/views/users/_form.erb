@@ -1,0 +1,32 @@
+<%= render 'shared/errors', obj:@user %>
+
+<div class="row">
+  <div class="col-xs-12">
+<%= form_for(@user, :html => {class: "form-horizontal", role:'form'}) do |a| %>
+<div class="form-group">
+  <label class="col-sm-2 control-label">User name</label>
+    <div class="col-sm-8">
+        <%= a.text_field :username , class: "form-control", placeholder: 'enter user name' %>
+    </div>
+</div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-8">
+          <%= a.email_field :email,class: "form-control", placeholder: 'enter  email' %>
+      </div>
+ </div>
+ <div class="form-group">
+   <label class="col-sm-2 control-label">password</label>
+     <div class="col-sm-8">
+         <%= a.password_field  :password ,class: "form-control", placeholder: 'enter  password' %>
+     </div>
+</div>
+      <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= a.submit name: button_name , class: "btn btn-primary btn-lg" %>
+          </div>
+      </div>
+<%end%>
+</div>
+
+</div>

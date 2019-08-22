@@ -1,11 +1,19 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :destroy, :update, :show]
-def home
-   render 'home'
-end
-def index
-  @articles = Article.all
+  before_action :require_user, only:[:edit, :destroy,:update, :create]
+  before_action :require_same_user, only:[:edit, :destroy, :update]
 
+
+
+
+def home
+
+  redirect_to articles_path if logged_in
+end
+
+
+def index
+  @articles =  Article.paginate(page: params[:page], per_page: 5)
 end
 
 def new
@@ -14,7 +22,7 @@ end
 
 def create
   @article = Article.new(article_params)
-
+  @article.user = current_user
   if @article.save
     flash[:success] = "thank you, your article is saved"
     redirect_to article_path(@article)
@@ -51,6 +59,13 @@ def article_params
 end
 def set_article
   @article = Article.find(params[:id])
+end
+
+def require_same_user
+  if current_user != @article.user and !current_user.admin?
+    flash[:danger] = "sorry this is not your ID "
+    redirect_to root_path
+end
 end
 
 

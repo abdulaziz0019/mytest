@@ -1,0 +1,16 @@
+
+<h1 align= "center" >here is the list of all users signed up</h1>
+<% @users.each do |user| %>
+<div align= "center">
+  <ul class = "listing">
+    <div class="rows">
+      <div class="well col-md-4 col-md-offset-1">
+        <li>created at: <%=user.created_at.strftime("%Y/%m/%d")%></li>
+        <div class="prof-image" ><%= image_tag avatar_url(user,105)%></div>
+        <li><%=link_to user.username, user_path(user)%></li>
+        <li><%=pluralize(user.articles.count,"article") if user.articles %></li>
+      </div>
+    </div>
+  </ul>
+  </div>
+<%end%>
