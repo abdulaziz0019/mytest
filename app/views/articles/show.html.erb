@@ -4,7 +4,7 @@
   <h4 class="center"> <strong>full  article</strong> </h4>
     <hr>
             <%= simple_format(@article.description) %>
-            <% if is_admin || (current_user == @article.user && logged_in) %>
+            <% if logged_in && (current_user == @article.user || current_user.admin?) %>
 
              <div class="article-actions">
                <hr>
