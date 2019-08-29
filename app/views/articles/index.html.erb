@@ -32,12 +32,16 @@
                                           <small>created by: user not found , </small>
                                           <%=article.created_at.strftime("%Y/%m/%d")%>
                                           <%end%>
+                                              <div class="tags">
+                                                <p><%= render article.categories %></p>
+                                              </div>
 				        </div>  <!--//item-inner-->
 			    </div><!--//item-->
         </div>
   </div>
 </div>
 <%end%>
+
 <div align = "left">
   <%= will_paginate %>
 

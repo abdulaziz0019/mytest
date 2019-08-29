@@ -1,18 +1,20 @@
 
 <h2>Title: <%= @article.title %></h2>
 <div class=" col-xs-10 col-xs-offset-1 col-lg-12 col-lg-offset-0 ">
-  <h4 class="center"> <strong>full  article</strong> </h4>
-    <hr>
-            <%= simple_format(@article.description) %>
-            <% if logged_in && (current_user == @article.user || current_user.admin?) %>
+    <h4 class="center"> <strong>full  article</strong> </h4>
+      <hr>
+              <%= simple_format(@article.description) %>
+              <% if logged_in && (current_user == @article.user || current_user.admin?) %>
 
-             <div class="article-actions">
-               <hr>
-               <%= link_to "back to articles" , articles_path, class:"btn btn-xs btn-success " %>
-               <%= link_to "edit the article" , edit_article_path(@article) , class:"btn btn-xs btn-primary " %>
-               <%= link_to "Delete thevarticle" , article_path(@article),method: :delete, data: {confirm:'are you sure?'},
-                                                 class: "btn btn-xs btn-danger" %>
-           </div>
-           <%end%>
-
+                  <div class="article-actions">
+                        <hr>
+                       <%= link_to "back to articles" , articles_path, class:"btn btn-xs btn-success " %>
+                       <%= link_to "edit the article" , edit_article_path(@article) , class:"btn btn-xs btn-primary " %>
+                       <%= link_to "Delete thevarticle" , article_path(@article),method: :delete, data: {confirm:'are you sure?'},
+                                                         class: "btn btn-xs btn-danger" %>
+                    </div>
+              <%end%>
+        <% if @article.categories.any?%>
+               <p><%= render @article.categories %></p>
+         <%end%>
 </div>
